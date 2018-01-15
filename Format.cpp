@@ -115,3 +115,172 @@ int main(){
 }
 
 memset(arr,0,sizeof(arr)); //INITIALIZING AN ARRAY ALL TO ZERO
+
+
+
+
+
+
+
+
+/////////////////////////////DAY1
+#include <bits/stdc++.h>
+using namespace std;
+
+
+struct c{
+    int x, y;
+    string s;
+    bool operator < (c k1) const{
+        if(y == k1.y){
+            if(x == k1.x){
+                return s < k1.s;
+            }
+            return x < k1.x;
+        }
+        return y < k1.y;
+    }
+
+    bool operator == (c k1) const{
+        if(y == k1.y and x == k1.x and s == k1.s)
+            return true;
+        return false;
+    }
+
+    c operator + (c k1) const{
+        c temp;
+        temp.x = x + k1.x;
+        temp.y = y - k1.y;
+        temp.s = s + k1.s;
+        return temp;
+    }
+
+    void print(){
+        cout << "x: " << x << " y: " << y << " s: " << s << endl;
+    }
+};
+
+void usingMap(){
+    map <string, double> mp;
+    mp["Sabik"] = 829.0;
+    mp["Jamil"] = 802.5;
+    mp["Khalil"] = 804.2;
+
+
+    cout << mp["Sabik"] << endl;
+    //cout << "Before Khayrul size " << mp.size() << endl;
+    /*if(mp.find("Khayrul") == mp.end()){
+        cout << "nai\n";
+    }*/
+    mp.erase("Sabik");
+    cout << mp.size() << endl;
+
+    for(auto it = mp.begin(); it != mp.end(); it++){
+        //pair <string, double> p = *it;
+        //cout << p.first << " " << p.second << endl;
+        cout << it -> first << " " << it -> second << endl;
+    }
+
+    cout << "After Khayrul size " << mp.size() << endl;
+}
+
+bool f(c k1, c k2){
+    if(k1.y == k2.y){
+       if(k1.x == k2.x){
+            return k1.s < k2.s;
+       }
+       return k1.x < k2.x;
+    }
+    return k1.y < k2.y;
+}
+
+void usingSet(){
+    set <c> s;
+    c k1, k2;
+    k1.x = 10;
+    k1.y = 21;
+    k1.s = "a";
+    s.insert(k1);
+
+
+    k1.x = 9;
+    k1.y = 210;
+    k1.s = "A";
+    s.insert(k1);
+
+    k1.x = 9;
+    k1.y = 210;
+    k1.s = "A";
+    s.insert(k1);
+
+
+    cout << s.size() << endl;
+
+}
+
+void usingPriorityQueue(){
+
+    priority_queue <c> pq;
+    c k1, k2;
+    k1.x = 10;
+    k1.y = 21;
+    k1.s = "a";
+    pq.push(k1);
+
+
+    k1.x = 9;
+    k1.y = 210;
+    k1.s = "A";
+    pq.push(k1);
+
+    k1.x = 9;
+    k1.y = 210;
+    k1.s = "A";
+    pq.push(k1);
+
+    cout << pq.size() << endl;
+    while(!pq.empty()){
+       // pq.top().print();
+        c temp = pq.top();
+        temp.print();
+        pq.pop();
+    }
+
+
+}
+
+void usingVector(){
+    vector <c> v;
+    c k1, k2;
+    k1.x = 10;
+    k1.y = 21;
+    k1.s = "a";
+    v.push_back(k1);
+    k2.x = 10;
+    k2.y = 21;
+    k2.s = "a";
+    v.push_back(k2);
+
+    c temp = k1 + k2;
+    temp.print();
+    /*k1.x = 9;
+    k1.y = 210;
+    k1.s = "b";
+    v.push_back(k1);
+
+    k1.x = 9;
+    k1.y = 210;
+    k1.s = "A";
+    v.push_back(k1);
+
+    sort(v.begin(), v.end(), f);
+
+    for(int i = 0; i < v.size(); i++){
+        cout << v[i].x << " " << v[i].y << " " << v[i].s << endl;
+    }*/
+}
+int main(){
+    //usingSet();
+    //usingPriorityQueue();
+    usingMap();
+}
