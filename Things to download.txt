@@ -1,0 +1,8 @@
+1.Eclipse
+2.Android studio
+3.Spotify
+4.Utorrent
+5.Gitbash
+6.IDM
+7.NEt speed monitor
+8.Dropbox
